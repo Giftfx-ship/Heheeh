@@ -185,26 +185,30 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 /* UNLOCK TIMER */
 /* UNLOCK TIMER */
-let count = 30; // secret countdown in seconds
-const timer = document.getElementById("timer");
-const unlockText = document.querySelector(".unlock-text");
+document.addEventListener("DOMContentLoaded", function () {
+  let count = 30; // secret countdown in seconds
+  const timer = document.getElementById("timer");
+  const unlockText = document.querySelector(".unlock-text");
 
-// Hide timer so user can't see countdown
-timer.style.display = "none";
+  // Hide timer so user can't see countdown
+  if(timer) timer.style.display = "none";
 
-let interval = setInterval(() => {
-  count--;
+  let interval = setInterval(() => {
+    count--;
 
-  // Secret countdown (not shown to user)
-  // console.log("Secret timer:", count);
+    // Secret countdown (not shown to user)
+    // console.log("Secret timer:", count);
 
-  if (count <= 0) {
-    clearInterval(interval);
-    unlockText.textContent = "Tool unlocked!";
-    document.getElementById("tool").style.display = "block";
-    document.getElementById("unlock").style.display = "none";
-  }
-}, 1000);
+    if (count <= 0) {
+      clearInterval(interval);
+      if(unlockText) unlockText.textContent = "Tool unlocked!";
+      const tool = document.getElementById("tool");
+      const unlockDiv = document.getElementById("unlock");
+      if(tool) tool.style.display = "block";
+      if(unlockDiv) unlockDiv.style.display = "none";
+    }
+  }, 1000);
+});
 
 // OPEN ADS ON BUTTON CLICK
 function followAndUnlock() {
@@ -229,7 +233,7 @@ Dear WhatsApp Support Team,
 
 I hope this message finds you well. I am writing to respectfully request a detailed review of the ban placed on my WhatsApp account associated with the phone number ${num}.
 
-I understand that WhatsApp enforces strict policies to protect users and maintain a safe communication environment. I truly respect these rules and appreciate the effort your team puts into preventing spam, scams, and misuse of the platform. However, I strongly believe that my account may have been restricted by mistake or unintentionally flagged by automated systems.
+I understand that WhatsApp enforces strict policies to protect users and maintain a safe communication environment. I truly respect these rules and apreciate the effort your team puts into preventing spam, scams, and misuse of the platform. However, I strongly believe that my account may have been restricted by mistake or unintentionally flagged by automated systems.
 
 My WhatsApp account is extremely important to me, as it is my primary means of communication with family members, friends, and legitimate contacts. I rely on it daily for meaningful personal conversations and necessary coordination. Since the ban, I have experienced significant disruption in staying connected with people who depend on this channel to reach me.
 
