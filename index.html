@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR DEV – WhatsApp Unban Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+:root{
+  --grad: linear-gradient(90deg,#ff3b3b,#ff00c8,#00ffd2);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:radial-gradient(circle at top left,#120010,#060615,#000);
+  color:#e8f0f6;
+  min-height:100vh;
+}
+
+.blob{
+  position:fixed;
+  width:450px;height:450px;
+  filter:blur(120px);
+  z-index:0;
+}
+.blob.pink{background:#ff00c8;top:-150px;left:-150px}
+.blob.cyan{background:#00ffd2;bottom:-150px;right:-150px}
+
+.card{
+  position:relative;
+  z-index:2;
+  max-width:950px;
+  margin:40px auto;
+  padding:40px;
+  border-radius:26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  backdrop-filter:blur(26px);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 60px 160px rgba(255,0,150,.35);
+  transform-style:preserve-3d;
+}
+
+h1,h2{
+  background:var(--grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:12px;
+  background:#0d0f12;
+  border:1px solid rgba(255,255,255,.08);
+  color:#fff;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  font-weight:900;
+  background:var(--grad);
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{transform:scale(1.05)}
+
+.hidden{display:none}
+section{margin-bottom:40px}
+
+/* FOOTER */
+footer{
+  margin:50px auto 25px;
+  max-width:950px;
+  text-align:center;
+  font-size:14px;
+  color:#9aa6ad;
+}
+footer a{
+  margin:0 10px;
+  font-size:22px;
+  color:#25D366;
+}
+footer a.channel{color:#00ffd2}
+</style>
+</head>
+
+<body>
+
+<div class="blob pink"></div>
+<div class="blob cyan"></div>
+
+<!-- UNLOCK -->
+<div id="unlock" class="card">
+  <h1>🔒 Unlock Pro Appeals</h1>
+  <p>Watch short ad to unlock (10 seconds)</p>
+  <button onclick="unlockTool()">UNLOCK NOW</button>
+</div>
+
+<!-- TOOL -->
+<div id="tool" class="card hidden">
+
+<h1>MR DEV – WHATSAPP UNBAN PRO 😈</h1>
+<p style="color:#9aa6ad">Professional account & group appeals</p>
+
+<section>
+<h2>Account Unban</h2>
+<input id="number" placeholder="+2349164624021">
+<select id="accountTemplate">
+<option value="1">Template 1 – Respectful</option>
+<option value="2">Template 2 – Long-term user</option>
+<option value="3">Template 3 – Family & community</option>
+<option value="4">Template 4 – Manual / Permanent ban</option>
+</select>
+<button onclick="sendAccount()">SEND APPEAL</button>
+</section>
+
+<section>
+<h2>Group Unban</h2>
+<input id="groupName" placeholder="Group name">
+<input id="groupLink" placeholder="Group invite link">
+<input id="groupPurpose" placeholder="Group purpose">
+<select id="groupTemplate">
+<option value="1">Formal appeal</option>
+<option value="2">Community appeal</option>
+<option value="3">Trust & Safety appeal</option>
+</select>
+<button onclick="sendGroup()">SEND GROUP APPEAL</button>
+</section>
+
+</div>
+
+<footer>
+  <p>© <span id="year"></span> <b>MR DEV</b> — Follow for more updates</p>
+  <a href="https://wa.me/233266309343" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E" target="_blank" class="channel">
+    <i class="fas fa-bullhorn"></i>
+  </a>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* UNLOCK */
+function unlockTool(){
+  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
+  setTimeout(()=>{
+    unlock.classList.add("hidden");
+    tool.classList.remove("hidden");
+  },10000);
+}
+
+/* EMAILS */
+const multiRecipientList=[
+"support@support.whatsapp.com",
+"iphone-support@support.whatsapp.com",
+"smb_web@support.whatsapp.com"
+].join(",");
+
+const accountTemplates = { /* YOUR FULL TEMPLATES HERE – UNCHANGED */ 
+  "1": (n)=>`Request for review of WhatsApp account ${n}`,
+  "2": (n)=>`Long-term user appeal for ${n}`,
+  "3": (n)=>`Family & community appeal for ${n}`,
+  "4": (n)=>`Manual review request for ${n}`
+};
+
+const groupTemplates={
+  "1":(n,l,p)=>`Group ${n} appeal`,
+  "2":(n,l,p)=>`Community group appeal`,
+  "3":(n,l,p)=>`Trust & Safety appeal`
+};
+
+function sendAccount(){
+  const num=number.value.trim();
+  if(!num) return alert("Enter number");
+  const body=encodeURIComponent(accountTemplates[accountTemplate.value](num));
+  const to=accountTemplate.value==="4"?multiRecipientList:"support@support.whatsapp.com";
+  location.href=`mailto:${to}?subject=WhatsApp Unban Appeal&body=${body}`;
+}
+
+function sendGroup(){
+  const body=encodeURIComponent(
+    groupTemplates[groupTemplate.value](
+      groupName.value,groupLink.value,groupPurpose.value
+    )
+  );
+  location.href=`mailto:support@support.whatsapp.com?subject=Group Unban Appeal&body=${body}`;
+}
+</script>
+
+</body>
+</html>
