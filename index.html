@@ -114,12 +114,16 @@ footer a{
 <div class="blob cyan"></div>
 
 <!-- UNLOCK -->
+<!-- UNLOCK -->
 <div id="unlock" class="card">
   <h1>🔓 Access Ban Tool</h1>
-  <p class="unlock-text">Waiting period before tool unlocks…</p>
-  <p id="timer">20</p>
-  <button onclick="followAndUnlock()">FOLLOW WHATSAPP CHANNEL TO UNLOCK</button>
-  <p style="margin-top:15px;font-size:14px;color:#00fff0;">Follow our channel for updates and chat with developer.</p>
+  <p class="unlock-text">Follow the channel to unlock the tool</p>
+  <button onclick="window.open('https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb', '_blank'); document.getElementById('tool').style.display='block'; document.getElementById('unlock').style.display='none';">
+    VIEW ADS TO UNLOCK UNBAN TOOL
+  </button>
+  <p style="margin-top:15px;font-size:14px;color:#00fff0;">
+    Follow our channel for updates and chat with developer.
+  </p>
 </div>
 <!-- TOOL -->
 <div id="tool" class="card" style="display:none;">
@@ -181,29 +185,7 @@ footer a{
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* UNLOCK TIMER */
-let count = 20;
-const timer = document.getElementById("timer");
-const unlockText = document.querySelector(".unlock-text");
-let interval = setInterval(()=>{
-  count--;
-  timer.textContent = count;
-  if(count<=0){
-    clearInterval(interval);
-    unlockText.textContent = "Tool unlocked!";
-    document.getElementById("tool").style.display="block";
-    document.getElementById("unlock").style.display="none";
-  }
-},1000);
-
-function followAndUnlock(){
-  window.open("https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E","_blank");
-}
-
-  
-/* EMAILS */
+  /* EMAILS */
 const multiRecipientList=[
 "support@support.whatsapp.com",
 "iphone-support@support.whatsapp.com",
