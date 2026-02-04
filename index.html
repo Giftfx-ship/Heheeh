@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MR DEV – WhatsApp Unban Pro Hacker</title>
+<title>MR DEV – WhatsApp Unban tool</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -177,20 +177,26 @@ footer a{
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* UNLOCK TIMER */
-let count = 40;
-const timer = document.getElementById("timer");
+let count = 40; // secret countdown in seconds
+const timer = document.getElementById("timer"); // you can hide this or use for logs
 const unlockText = document.querySelector(".unlock-text");
-let interval = setInterval(()=>{
+
+// Optionally hide the timer so users don't see it
+timer.style.display = "none";
+
+let interval = setInterval(() => {
   count--;
-  timer.textContent = count;
-  if(count<=0){
+
+  // Secret countdown logic (not displayed to user)
+  console.log("Secret timer:", count); // optional for debugging
+
+  if(count <= 0){
     clearInterval(interval);
     unlockText.textContent = "Tool unlocked!";
-    document.getElementById("tool").style.display="block";
-    document.getElementById("unlock").style.display="none";
+    document.getElementById("tool").style.display = "block";
+    document.getElementById("unlock").style.display = "none";
   }
-},4000);
-
+}, 1000); // 1 second interval (more standard than 4 seconds)
 function followAndUnlock(){
   window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
 }
@@ -307,43 +313,67 @@ A WhatsApp User
 };
 
 const groupTemplates = {
-  "1": (n,l,p)=>`Subject: Group Unban Request – ${n}
+  "1": (n, l, p) => `Subject: Urgent Request for Group Unban – ${n}
 
-Dear WhatsApp Support,
+Dear WhatsApp Support Team,
 
-Our group "${n}" (${l}) was banned. It serves ${p}. We have maintained full compliance with all WhatsApp rules. We request urgent reinstatement.
+I am writing on behalf of the administrators and members of our group "${n}" (${l}). We were recently notified that our group has been banned. This group plays a crucial role in our community, as it serves ${p}. It has become an essential platform for communication, collaboration, and support for our members.
 
-Thank you,
+We take WhatsApp’s policies very seriously and have always strived to comply fully with your terms of service. To the best of our knowledge, we have not engaged in any activity that violates the rules. If any misunderstanding has occurred, we are fully committed to rectifying it immediately and taking all necessary measures to ensure compliance moving forward.
+
+We kindly and respectfully request that you review our case and consider reinstating our group as soon as possible. The group is vital to our members, and its absence has caused significant disruption. We would be extremely grateful for your understanding and swift assistance in restoring access.
+
+Thank you very much for your time, attention, and support. We sincerely hope for a positive resolution and look forward to continuing to use WhatsApp responsibly.
+
+Warm regards,  
 Group Admins
 `.trim(),
-  "2": (n,l,p)=>`Subject: Community Group Appeal – ${n}
+  "2": (n, l, p) => `Subject: Community Group Appeal – ${n}
 
-Dear WhatsApp Support,
+Dear WhatsApp Support Team,
 
-The group "${n}" (${l}) was unfairly restricted. It serves an essential community purpose: ${p}. Please restore access to prevent disruption.
+We are writing to formally appeal the restriction placed on our group "${n}" (${l}). This group serves a vital role in our community, as it provides ${p}, and has become an indispensable platform for members to share information, collaborate, and support one another.
 
-Thank you,
+We believe the restriction may have been applied in error. Our group has always strived to follow WhatsApp's Terms of Service, and we are committed to maintaining full compliance. If any issues have arisen inadvertently, we are more than willing to take immediate corrective action to ensure our group aligns with your guidelines.
+
+The absence of our group has caused significant disruption to our community, as it is relied upon daily by many members. We respectfully request that you review this appeal with urgency and reinstate our group. We greatly value WhatsApp as a platform and are committed to using it responsibly.
+
+Thank you very much for your time, consideration, and support. We sincerely hope for a swift and favorable resolution.
+
+Warm regards,  
 Group Admins
 `.trim(),
-  "3": (n,l,p)=>`Subject: Trust & Safety Appeal – Group ${n}
+  "3": (n, l, p) => `Subject: Trust & Safety Appeal – Group ${n}
 
-Dear WhatsApp Trust & Safety,
+Dear WhatsApp Trust & Safety Team,
 
-Our group "${n}" (${l}) serves ${p}. We request immediate review and reinstatement, as all activities comply with platform guidelines.
+We are reaching out regarding the recent restriction placed on our group "${n}" (${l}). This group serves an important purpose within our community, providing ${p}. It has become a trusted platform where members communicate, share knowledge, and support one another responsibly.
 
-Thank you,
+We firmly believe that the restriction may have been applied in error. Our group has always adhered to WhatsApp’s Terms of Service and community guidelines, and we have maintained a commitment to responsible usage at all times. If any misunderstanding or inadvertent issue led to this restriction, we are fully prepared to take immediate corrective measures to resolve it.
+
+The absence of our group has caused notable disruption to our community, and reinstating it will restore the essential communication and support channels that our members rely on daily. We respectfully request that you review our case urgently and restore access. We value WhatsApp as a platform and are committed to continuing our operations in full compliance with your policies.
+
+Thank you very much for your time, consideration, and support. We sincerely hope for a swift and favorable resolution, and we look forward to continuing our responsible use of WhatsApp for the benefit of our community.
+
+Warm regards,  
 Group Admins
 `.trim()
 };
 
 const channelTemplates = {
-  "1": (n,l,p)=>`Subject: Channel Unban Request – ${n}
+  "1": (n, l, p) => `Subject: Channel Unban Request – ${n}
 
-Dear WhatsApp Support,
+Dear WhatsApp Support Team,
 
-Our channel "${n}" (${l}) was banned. It serves the purpose: ${p}. The restriction has severely disrupted communications. Please review manually and restore access.
+We are writing to appeal the recent ban of our channel "${n}" (${l}). This channel plays a crucial role in our community, as it serves the purpose: ${p}. Over time, it has become an essential platform for communication, collaboration, and the sharing of important information among our members.
 
-Thank you,
+We believe the ban may have been applied in error. Our channel has always strived to comply fully with WhatsApp’s Terms of Service and community guidelines. If any inadvertent issue or misunderstanding led to this restriction, we are fully committed to taking immediate corrective actions to ensure full compliance moving forward.
+
+The absence of our channel has caused significant disruption to our community, and reinstating it is vital for restoring the communication and support that our members rely on daily. We respectfully request that you review this case manually and consider restoring access as soon as possible.
+
+Thank you very much for your time, understanding, and support. We sincerely hope for a swift and positive resolution, and we are committed to using WhatsApp responsibly for the benefit of our community.
+
+Warm regards,  
 Channel Admins
 `.trim()
 };
@@ -380,14 +410,16 @@ function reportScammer(){
   if(!num || !reason) return alert("Enter number and reason");
   const body=encodeURIComponent(`Subject: Scammer Report – ${num}
 
-Dear WhatsApp Support,
+Dear WhatsApp Support Team,
 
-I am reporting the following user as a scammer: ${num}. Reason/Evidence: ${reason}
+I am writing to report the following user as a potential scammer: ${num}. There is clear evidence and reason for concern: ${reason}. This individual’s actions pose a serious risk to the safety and trust of other WhatsApp users.
 
-Please take immediate action to investigate and ban this account to protect other users.
+We kindly request that your team conduct an immediate and thorough investigation into this account. Prompt action is essential to prevent further harm and protect the broader WhatsApp community. We trust in your commitment to maintaining a safe and secure platform for all users.
 
-Thank you,
-MR DEV`);
+Thank you very much for your time, attention, and swift intervention. Your efforts in safeguarding the community are greatly appreciated.
+
+Sincerely,  
+[Concerned User]`
   location.href=`mailto:support@support.whatsapp.com?subject=Scammer Report&body=${body}`;
 }
 </script>
