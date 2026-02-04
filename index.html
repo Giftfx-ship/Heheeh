@@ -3,46 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MR DEV – WhatsApp Unban Pro</title>
+<title>MR DEV – WhatsApp Unban Pro Hacker</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-:root{
-  --grad: linear-gradient(90deg,#ff3b3b,#ff00c8,#00ffd2);
+:root {
+  --grad: linear-gradient(90deg,#ff0080,#00fff0,#fffc00);
+  --dark:#0a0a0a;
+  --neon:#00fff0;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;font-family:'Orbitron',sans-serif;margin:0;padding:0;}
 
 body{
-  margin:0;
-  font-family:Poppins,sans-serif;
-  background:radial-gradient(circle at top left,#120010,#060615,#000);
-  color:#e8f0f6;
+  background:#010101;
+  color:#00ffea;
   min-height:100vh;
+  overflow-x:hidden;
 }
 
+/* BLOBS */
 .blob{
   position:fixed;
-  width:450px;height:450px;
-  filter:blur(120px);
+  width:500px;height:500px;
+  border-radius:50%;
+  filter:blur(150px);
   z-index:0;
+  animation: float 25s infinite alternate;
 }
-.blob.pink{background:#ff00c8;top:-150px;left:-150px}
-.blob.cyan{background:#00ffd2;bottom:-150px;right:-150px}
+.blob.pink{background:#ff0080;top:-250px;left:-250px;}
+.blob.cyan{background:#00fff0;bottom:-250px;right:-250px;}
+@keyframes float{
+  0%{transform:translateY(0px) translateX(0px);}
+  100%{transform:translateY(50px) translateX(50px);}
+}
 
+/* CARD */
 .card{
   position:relative;
   z-index:2;
-  max-width:950px;
-  margin:40px auto;
+  max-width:900px;
+  margin:50px auto;
   padding:40px;
-  border-radius:26px;
-  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
-  backdrop-filter:blur(26px);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 60px 160px rgba(255,0,150,.35);
+  border-radius:20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(0,255,240,0.2);
+  box-shadow:0 0 60px rgba(0,255,240,0.4);
   transform-style:preserve-3d;
 }
 
@@ -50,16 +59,17 @@ h1,h2{
   background:var(--grad);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  margin-bottom:20px;
 }
 
-input,select{
+input,select,textarea{
   width:100%;
   padding:14px;
-  margin-bottom:12px;
+  margin-bottom:15px;
   border-radius:12px;
-  background:#0d0f12;
-  border:1px solid rgba(255,255,255,.08);
-  color:#fff;
+  background:#111;
+  border:1px solid rgba(0,255,240,0.3);
+  color:#00fff0;
 }
 
 button{
@@ -72,10 +82,7 @@ button{
   cursor:pointer;
   transition:.3s;
 }
-button:hover{transform:scale(1.05)}
-
-.hidden{display:none}
-section{margin-bottom:40px}
+button:hover{transform:scale(1.05);}
 
 /* FOOTER */
 footer{
@@ -83,17 +90,22 @@ footer{
   max-width:950px;
   text-align:center;
   font-size:14px;
-  color:#9aa6ad;
+  color:#00fff0;
 }
 footer a{
   margin:0 10px;
   font-size:22px;
-  color:#25D366;
+  color:#00fff0;
 }
-footer a.channel{color:#00ffd2}
+
+/* UNLOCK MESSAGE */
+.unlock-text{
+  font-size:18px;
+  color:#ff0080;
+  margin-bottom:15px;
+}
 </style>
 </head>
-
 <body>
 
 <div class="blob pink"></div>
@@ -101,27 +113,28 @@ footer a.channel{color:#00ffd2}
 
 <!-- UNLOCK -->
 <div id="unlock" class="card">
-  <h1>🔒 Unlock Pro Appeals</h1>
-  <p>Watch short ad to unlock (10 seconds)</p>
-  <button onclick="unlockTool()">UNLOCK NOW</button>
+  <h1>🔓 Access Pro Appeals</h1>
+  <p class="unlock-text">Waiting period before tool unlocks…</p>
+  <p id="timer">20</p>
+  <button onclick="followAndUnlock()">CHAT & UNLOCK</button>
+  <p style="margin-top:15px;font-size:14px;color:#00fff0;">Follow our channel for updates and chat with developer.</p>
 </div>
 
 <!-- TOOL -->
-<div id="tool" class="card hidden">
-
+<div id="tool" class="card" style="display:none;">
 <h1>MR DEV – WHATSAPP UNBAN PRO 😈</h1>
-<p style="color:#9aa6ad">Professional account & group appeals</p>
+<p style="color:#00fff0">Professional unban & reporting system</p>
 
 <section>
 <h2>Account Unban</h2>
-<input id="number" placeholder="+2349164624021">
+<input id="number" placeholder="+234XXXXXXXXX">
 <select id="accountTemplate">
 <option value="1">Template 1 – Respectful</option>
 <option value="2">Template 2 – Long-term user</option>
 <option value="3">Template 3 – Family & community</option>
 <option value="4">Template 4 – Manual / Permanent ban</option>
 </select>
-<button onclick="sendAccount()">SEND APPEAL</button>
+<button onclick="sendAccount()">SEND ACCOUNT APPEAL</button>
 </section>
 
 <section>
@@ -137,26 +150,49 @@ footer a.channel{color:#00ffd2}
 <button onclick="sendGroup()">SEND GROUP APPEAL</button>
 </section>
 
+<section>
+<h2>Channel Unban</h2>
+<input id="channelName" placeholder="Channel Name">
+<input id="channelLink" placeholder="Channel Link">
+<textarea id="channelPurpose" placeholder="Channel Purpose / Info"></textarea>
+<button onclick="sendChannel()">SEND CHANNEL APPEAL</button>
+</section>
+
+<section>
+<h2>Report Scammer / Ban Request</h2>
+<input id="scammerNumber" placeholder="Scammer's Number">
+<textarea id="scammerReason" placeholder="Reason / Evidence"></textarea>
+<button onclick="reportScammer()">REPORT SCAMMER</button>
+</section>
+
 </div>
 
 <footer>
-  <p>© <span id="year"></span> <b>MR DEV</b> — Follow for more updates</p>
+  <p>© <span id="year"></span> MR DEV – Follow channel & chat with dev</p>
   <a href="https://wa.me/233266309343" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E" target="_blank" class="channel">
-    <i class="fas fa-bullhorn"></i>
-  </a>
+  <a href="https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E" target="_blank"><i class="fas fa-bullhorn"></i></a>
 </footer>
 
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
-/* UNLOCK */
-function unlockTool(){
-  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
-  setTimeout(()=>{
-    unlock.classList.add("hidden");
-    tool.classList.remove("hidden");
-  },10000);
+/* UNLOCK TIMER */
+let count = 20;
+const timer = document.getElementById("timer");
+const unlockText = document.querySelector(".unlock-text");
+let interval = setInterval(()=>{
+  count--;
+  timer.textContent = count;
+  if(count<=0){
+    clearInterval(interval);
+    unlockText.textContent = "Tool unlocked!";
+    document.getElementById("tool").style.display="block";
+    document.getElementById("unlock").style.display="none";
+  }
+},1000);
+
+function followAndUnlock(){
+  window.open("https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E","_blank");
 }
 
 /* EMAILS */
@@ -166,36 +202,142 @@ const multiRecipientList=[
 "smb_web@support.whatsapp.com"
 ].join(",");
 
-const accountTemplates = { /* YOUR FULL TEMPLATES HERE – UNCHANGED */ 
-  "1": (n)=>`Request for review of WhatsApp account ${n}`,
-  "2": (n)=>`Long-term user appeal for ${n}`,
-  "3": (n)=>`Family & community appeal for ${n}`,
-  "4": (n)=>`Manual review request for ${n}`
+const accountTemplates = {
+  "1": (num) => `Subject: Request for Manual Review – Account ${num}
+
+Dear WhatsApp Support Team,
+
+I respectfully request the immediate review and reinstatement of my WhatsApp account ${num}. This account is my primary communication tool, and the restriction has severely disrupted my personal, professional, and family communication. 
+
+I have never intentionally violated WhatsApp policies. Any unusual activity is purely unintentional, and I kindly ask for a thorough manual review. I assure strict compliance with all guidelines moving forward.
+
+Thank you for your time and consideration.
+
+Kind regards,
+MR DEV
+`.trim(),
+
+  "2": (num) => `Subject: Long-term user appeal – Account ${num}
+
+Dear WhatsApp Support Team,
+
+I have been a responsible WhatsApp user for many years. My account ${num} was unexpectedly restricted, causing significant disruption to personal and business communication.
+
+I kindly request urgent manual review. My actions have always complied with WhatsApp policies. I am committed to full compliance and avoiding any future misunderstandings.
+
+Sincerely,
+MR DEV
+`.trim(),
+
+  "3": (num) => `Subject: Family & community appeal – Account ${num}
+
+Dear WhatsApp Support Team,
+
+WhatsApp account ${num} is critical for connecting with family, community, and professional contacts. The restriction has caused unintended hardships.
+
+I request a thorough review, emphasizing my history of responsible usage. I guarantee compliance with all WhatsApp policies henceforth.
+
+Sincerely,
+MR DEV
+`.trim(),
+
+  "4": (num) => `Subject: Manual review – Permanent restriction – Account ${num}
+
+Dear WhatsApp Trust & Safety Team,
+
+I am requesting an urgent manual review of my permanently restricted account ${num}. I have never engaged in malicious activity, and any restriction appears to be an error or automated misinterpretation.
+
+Please consider this appeal carefully. I am fully committed to using WhatsApp responsibly.
+
+Sincerely,
+MR DEV
+`.trim()
 };
 
-const groupTemplates={
-  "1":(n,l,p)=>`Group ${n} appeal`,
-  "2":(n,l,p)=>`Community group appeal`,
-  "3":(n,l,p)=>`Trust & Safety appeal`
+const groupTemplates = {
+  "1": (n,l,p)=>`Subject: Group Unban Request – ${n}
+
+Dear WhatsApp Support,
+
+Our group "${n}" (${l}) was banned. It serves ${p}. We have maintained full compliance with all WhatsApp rules. We request urgent reinstatement.
+
+Thank you,
+Group Admins
+`.trim(),
+  "2": (n,l,p)=>`Subject: Community Group Appeal – ${n}
+
+Dear WhatsApp Support,
+
+The group "${n}" (${l}) was unfairly restricted. It serves an essential community purpose: ${p}. Please restore access to prevent disruption.
+
+Thank you,
+Group Admins
+`.trim(),
+  "3": (n,l,p)=>`Subject: Trust & Safety Appeal – Group ${n}
+
+Dear WhatsApp Trust & Safety,
+
+Our group "${n}" (${l}) serves ${p}. We request immediate review and reinstatement, as all activities comply with platform guidelines.
+
+Thank you,
+Group Admins
+`.trim()
+};
+
+const channelTemplates = {
+  "1": (n,l,p)=>`Subject: Channel Unban Request – ${n}
+
+Dear WhatsApp Support,
+
+Our channel "${n}" (${l}) was banned. It serves the purpose: ${p}. The restriction has severely disrupted communications. Please review manually and restore access.
+
+Thank you,
+Channel Admins
+`.trim()
 };
 
 function sendAccount(){
-  const num=number.value.trim();
+  const num=document.getElementById("number").value.trim();
   if(!num) return alert("Enter number");
-  const body=encodeURIComponent(accountTemplates[accountTemplate.value](num));
-  const to=accountTemplate.value==="4"?multiRecipientList:"support@support.whatsapp.com";
+  const body=encodeURIComponent(accountTemplates[document.getElementById("accountTemplate").value](num));
+  const to=document.getElementById("accountTemplate").value==="4"?multiRecipientList:"support@support.whatsapp.com";
   location.href=`mailto:${to}?subject=WhatsApp Unban Appeal&body=${body}`;
 }
 
 function sendGroup(){
-  const body=encodeURIComponent(
-    groupTemplates[groupTemplate.value](
-      groupName.value,groupLink.value,groupPurpose.value
-    )
-  );
+  const body=encodeURIComponent(groupTemplates[document.getElementById("groupTemplate").value](
+    document.getElementById("groupName").value,
+    document.getElementById("groupLink").value,
+    document.getElementById("groupPurpose").value
+  ));
   location.href=`mailto:support@support.whatsapp.com?subject=Group Unban Appeal&body=${body}`;
 }
-</script>
 
+function sendChannel(){
+  const body=encodeURIComponent(channelTemplates["1"](
+    document.getElementById("channelName").value,
+    document.getElementById("channelLink").value,
+    document.getElementById("channelPurpose").value
+  ));
+  location.href=`mailto:support@support.whatsapp.com?subject=Channel Unban Appeal&body=${body}`;
+}
+
+function reportScammer(){
+  const num=document.getElementById("scammerNumber").value.trim();
+  const reason=document.getElementById("scammerReason").value.trim();
+  if(!num || !reason) return alert("Enter number and reason");
+  const body=encodeURIComponent(`Subject: Scammer Report – ${num}
+
+Dear WhatsApp Support,
+
+I am reporting the following user as a scammer: ${num}. Reason/Evidence: ${reason}
+
+Please take immediate action to investigate and ban this account to protect other users.
+
+Thank you,
+MR DEV`);
+  location.href=`mailto:support@support.whatsapp.com?subject=Scammer Report&body=${body}`;
+}
+</script>
 </body>
-</html>
+  </html>
