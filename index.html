@@ -3,57 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MR DEV – WhatsApp Unban tool</title>
+<title>MR DEV – UNBAN TERMINAL</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-:root {
-  --grad: linear-gradient(90deg,#ff0080,#00fff0,#fffc00);
-  --dark:#0a0a0a;
-  --neon:#00fff0;
+:root{
+  --red:#ff003c;
+  --cyan:#00fff0;
+  --bg:#020202;
+  --grad:linear-gradient(90deg,var(--red),var(--cyan));
 }
-
-*{box-sizing:border-box;font-family:'Orbitron',sans-serif;margin:0;padding:0;}
-
+*{box-sizing:border-box;font-family:'Orbitron',sans-serif}
 body{
-  background:#010101;
-  color:#00ffea;
+  margin:0;
   min-height:100vh;
-  overflow-x:hidden;
+  background:
+    radial-gradient(circle at top,#12000a,#000),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,255,240,.04),
+      rgba(0,255,240,.04) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  color:var(--cyan);
 }
 
-/* BLOBS */
-.blob{
-  position:fixed;
-  width:500px;height:500px;
-  border-radius:50%;
-  filter:blur(150px);
-  z-index:0;
-  animation: float 25s infinite alternate;
+/* GLITCH */
+.glitch{position:relative;font-weight:900;text-transform:uppercase}
+.glitch::before,.glitch::after{
+  content:attr(data-text);
+  position:absolute;left:0;top:0;width:100%;opacity:.8
 }
-.blob.pink{background:#ff0080;top:-250px;left:-250px;}
-.blob.cyan{background:#00fff0;bottom:-250px;right:-250px;}
-@keyframes float{
-  0%{transform:translateY(0px) translateX(0px);}
-  100%{transform:translateY(50px) translateX(50px);}
-}
+.glitch::before{color:var(--red);transform:translate(-2px,0);animation:g1 2s infinite}
+.glitch::after{color:var(--cyan);transform:translate(2px,0);animation:g2 1.5s infinite}
+@keyframes g1{0%{clip-path:inset(0 0 80% 0)}50%{clip-path:inset(40% 0 40% 0)}}
+@keyframes g2{0%{clip-path:inset(80% 0 0 0)}50%{clip-path:inset(20% 0 60% 0)}}
 
 /* CARD */
 .card{
-  position:relative;
-  z-index:2;
-  max-width:900px;
-  margin:50px auto;
+  max-width:950px;
+  margin:60px auto;
   padding:40px;
   border-radius:20px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(0,255,240,0.2);
-  box-shadow:0 0 60px rgba(0,255,240,0.4);
-  transform-style:preserve-3d;
+  background:rgba(0,0,0,.8);
+  border:1px solid rgba(0,255,240,.25);
+  box-shadow:
+    0 0 30px rgba(255,0,60,.6),
+    0 0 90px rgba(0,255,240,.3);
+  animation:float 6s ease-in-out infinite;
 }
+@keyframes float{50%{transform:translateY(-10px) rotateX(2deg) rotateY(-2deg)}}
 
 h1,h2{
   background:var(--grad);
@@ -65,160 +66,133 @@ h1,h2{
 input,select,textarea{
   width:100%;
   padding:14px;
-  margin-bottom:15px;
+  margin-bottom:14px;
   border-radius:12px;
-  background:#111;
-  border:1px solid rgba(0,255,240,0.3);
-  color:#00fff0;
+  background:#050505;
+  border:1px solid rgba(0,255,240,.4);
+  color:var(--cyan);
 }
 
 button{
   width:100%;
-  padding:14px;
+  padding:15px;
   border:none;
   border-radius:14px;
   font-weight:900;
   background:var(--grad);
   cursor:pointer;
-  transition:.3s;
 }
-button:hover{transform:scale(1.05);}
+button:hover{transform:scale(1.05);box-shadow:0 0 25px var(--red)}
 
-/* FOOTER */
-footer{
-  margin:50px auto 25px;
-  max-width:950px;
-  text-align:center;
-  font-size:14px;
-  color:#00fff0;
-}
-footer a{
-  margin:0 10px;
-  font-size:22px;
-  color:#00fff0;
-}
+.unlock-text{color:var(--red);font-size:18px;margin-bottom:10px}
+#timer{font-size:32px;font-weight:900;text-shadow:0 0 20px var(--cyan)}
 
-/* UNLOCK MESSAGE */
-.unlock-text{
-  font-size:18px;
-  color:#ff0080;
-  margin-bottom:15px;
-}
+section{margin-top:40px}
 </style>
 </head>
+
 <body>
 
-<div class="blob pink"></div>
-<div class="blob cyan"></div>
-
-<!-- UNLOCK -->
+<!-- 🔒 UNLOCK -->
 <div id="unlock" class="card">
-  <h1>🔓 Access Unban Tool</h1>
-  <p class="unlock-text">Waiting period before tool unlocks…</p>
+  <h1 class="glitch" data-text="ACCESS RESTRICTED">ACCESS RESTRICTED</h1>
+  <p class="unlock-text">Authorization pending…</p>
   <p id="timer">20</p>
-  <button id="unlockBtn">VIEW ADS TO UNLOCK</button>
-  <p style="margin-top:15px;font-size:14px;color:#00fff0;">
-    Follow our channel for updates or chat with developer.
-  </p>
-</div>
-<!-- TOOL -->
-<div id="tool" class="card" style="display:none;">
-<h1>MR DEV – WHATSAPP UNBAN</h1>
-<p style="color:#00fff0">Professional unban system</p>
-
-<section>
-<h2>Account Unban</h2>
-<input id="number" placeholder="+234XXXXXXXXX">
-<select id="accountTemplate">
-<option value="1">Template 1 – Respectful</option>
-<option value="2">Template 2 – Long-term user</option>
-<option value="3">Template 3 – Family & community</option>
-<option value="4">Template 4 – Manual / Permanent ban</option>
-</select>
-<button onclick="sendAccount()">SEND ACCOUNT UNBAN</button>
-</section>
-
-<section>
-<h2>Group Unban</h2>
-<input id="groupName" placeholder="Group name">
-<input id="groupLink" placeholder="Group invite link">
-<input id="groupPurpose" placeholder="Group purpose">
-<select id="groupTemplate">
-<option value="1">Formal appeal</option>
-<option value="2">Community appeal</option>
-<option value="3">Trust & Safety appeal</option>
-</select>
-<button onclick="sendGroup()">SEND GROUP UNBAN</button>
-</section>
-
-<section>
-<h2>Channel Unban</h2>
-<input id="channelName" placeholder="Channel Name">
-<input id="channelLink" placeholder="Channel Link">
-<textarea id="channelPurpose" placeholder="Channel Purpose / Info"></textarea>
-<button onclick="sendChannel()">SEND CHANNEL UNBAN</button>
-</section>
-
-<section>
-<h2>Ban Account</h2>
-<input id="scammerNumber" placeholder="Scammer's Number">
-<textarea id="scammerReason" placeholder="Reason / Evidence"></textarea>
-<button onclick="reportScammer()">BAN ACCOUNT</button>
-</section>
-
+  <button id="unlockBtn">▶ VIEW ADS & UNLOCK</button>
 </div>
 
-<footer>
-  <p>© <span id="year"></span> MR DEV – Follow channel for more updates</p>
-  <!-- Open chat with number -->
-  <a href="https://wa.me/233266309343" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <!-- Open channel in WhatsApp app -->
-  <a href="https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E" target="_blank">
-    <i class="fas fa-bullhorn"></i>
-  </a>
-</footer>
+<!-- 🧠 TOOL -->
+<div id="tool" class="card" style="display:none">
+  <h1 class="glitch" data-text="MR DEV TERMINAL">MR DEV TERMINAL</h1>
+  <p>Professional WhatsApp Unban & Control System</p>
+
+  <!-- ACCOUNT -->
+  <section>
+    <h2>Account Unban</h2>
+    <input id="number" placeholder="+234XXXXXXXXX">
+    <select id="accountTemplate">
+      <option value="1">Template 1 – Respectful</option>
+      <option value="2">Template 2 – Long-term user</option>
+      <option value="3">Template 3 – Community</option>
+      <option value="4">Template 4 – Permanent ban</option>
+    </select>
+    <button onclick="sendAccount()">SEND ACCOUNT APPEAL</button>
+  </section>
+
+  <!-- GROUP -->
+  <section>
+    <h2>Group Unban</h2>
+    <input id="groupName" placeholder="Group Name">
+    <input id="groupLink" placeholder="Group Invite Link">
+    <input id="groupPurpose" placeholder="Group Purpose">
+    <select id="groupTemplate">
+      <option value="1">Formal appeal</option>
+      <option value="2">Community appeal</option>
+      <option value="3">Trust & Safety appeal</option>
+    </select>
+    <button onclick="sendGroup()">SEND GROUP APPEAL</button>
+  </section>
+
+  <!-- CHANNEL -->
+  <section>
+    <h2>Channel Unban</h2>
+    <input id="channelName" placeholder="Channel Name">
+    <input id="channelLink" placeholder="Channel Link">
+    <textarea id="channelPurpose" placeholder="Channel Purpose"></textarea>
+    <button onclick="sendChannel()">SEND CHANNEL APPEAL</button>
+  </section>
+
+  <!-- SCAM -->
+  <section>
+    <h2>Ban / Report Scammer</h2>
+    <input id="scammerNumber" placeholder="Scammer Number">
+    <textarea id="scammerReason" placeholder="Reason / Evidence"></textarea>
+    <button onclick="reportScammer()">REPORT & BAN</button>
+  </section>
+</div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
+/* 🔓 UNLOCK LOGIC */
+const DURATION=20000;
+const unlock=document.getElementById("unlock");
+const tool=document.getElementById("tool");
+const timer=document.getElementById("timer");
+const text=document.querySelector(".unlock-text");
+let interval=null;
 
-  const timer = document.getElementById("timer");
-  const unlockText = document.querySelector(".unlock-text");
-  const toolDiv = document.getElementById("tool");
-  const unlockDiv = document.getElementById("unlock");
-  const unlockBtn = document.getElementById("unlockBtn");
+function startCountdown(sec){
+  let s=sec;
+  timer.textContent=s;
+  text.textContent="Decrypting access…";
+  interval=setInterval(()=>{
+    s--;
+    timer.textContent=s;
+    if(s<=0){
+      clearInterval(interval);
+      sessionStorage.removeItem("unlockStart");
+      unlock.style.display="none";
+      tool.style.display="block";
+    }
+  },1000);
+}
 
-  let count = 20;
-  let unlocked = true;
-  let interval = null;
+document.getElementById("unlockBtn").onclick=()=>{
+  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
+  if(sessionStorage.getItem("unlockStart")) return;
+  const start=Date.now();
+  sessionStorage.setItem("unlockStart",start);
+  startCountdown(20);
+};
 
-  unlockBtn.addEventListener("click", () => {
-    // Open the ad / link
-    window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
+const saved=sessionStorage.getItem("unlockStart");
+if(saved){
+  const elapsed=Date.now()-saved;
+  const rem=Math.ceil((DURATION-elapsed)/1000);
+  if(rem>0) startCountdown(rem);
+  else{unlock.style.display="none";tool.style.display="block";}
+}
 
-    // Prevent multiple timers
-    if(interval) return;
-
-    // Start the countdown
-    interval = setInterval(() => {
-      count--;
-      timer.textContent = count;
-      unlockText.textContent = "Unlocking in " + count + "s...";
-      if(count <= 0 && !unlocked){
-        clearInterval(interval);
-        unlocked = true;
-        unlockText.textContent = "Tool unlocked!";
-        toolDiv.style.display = "block";
-        unlockDiv.style.display = "none";
-      }
-    }, 1000);
-  });
-});
-
-
-/* EMAILS */
+//Email side
 const multiRecipientList=[
 "support@support.whatsapp.com",
 "iphone-support@support.whatsapp.com",
