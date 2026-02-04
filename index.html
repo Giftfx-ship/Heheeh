@@ -116,10 +116,11 @@ footer a{
   <h1>🔓 Access Pro Appeals</h1>
   <p class="unlock-text">Waiting period before tool unlocks…</p>
   <p id="timer">30</p>
-  <button onclick="followAndUnlock()">vVIEW ADS TO UNLOCK TOOL</button>
-  <p style="margin-top:15px;font-size:14px;color:#00fff0;">Follow our channel for updates and chat with developer for any issue.</p>
+  <button onclick="followAndUnlock()">VIEW ADS TO UNLOCK TOOL</button>
+  <p style="margin-top:15px;font-size:14px;color:#00fff0;">
+    Follow our channel for updates and chat with developer for any issue.
+  </p>
 </div>
-
 <!-- TOOL -->
 <div id="tool" class="card" style="display:none;">
 <h1>MR DEV – WHATSAPP UNBAN</h1>
@@ -183,29 +184,35 @@ footer a{
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* UNLOCK TIMER */
+/* UNLOCK TIMER */
 let count = 30; // secret countdown in seconds
-const timer = document.getElementById("timer"); // you can hide this or use for logs
+const timer = document.getElementById("timer");
 const unlockText = document.querySelector(".unlock-text");
 
-// Optionally hide the timer so users don't see it
+// Hide timer so user can't see countdown
 timer.style.display = "none";
 
 let interval = setInterval(() => {
   count--;
 
-  // Secret countdown logic (not displayed to user)
-  console.log("Secret timer:", count); // optional for debugging
+  // Secret countdown (not shown to user)
+  // console.log("Secret timer:", count);
 
-  if(count <= 0){
+  if (count <= 0) {
     clearInterval(interval);
     unlockText.textContent = "Tool unlocked!";
     document.getElementById("tool").style.display = "block";
     document.getElementById("unlock").style.display = "none";
   }
-}, 1000); // 1 second interval (more standard than 4 seconds)
-function followAndUnlock(){
-  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
-}
+}, 1000);
+
+// OPEN ADS ON BUTTON CLICK
+function followAndUnlock() {
+  window.open(
+    "https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb",
+    "_blank"
+  );
+  }
 
 /* EMAILS */
 const multiRecipientList=[
