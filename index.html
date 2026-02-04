@@ -130,69 +130,16 @@ footer a{
 <h1>MR DEV – WHATSAPP UNBAN</h1>
 <p style="color:#00fff0">Professional unban system</p>
 
-<section>
-<h2>Account Unban</h2>
-<input id="number" placeholder="+234XXXXXXXXX">
-<select id="accountTemplate">
-<option value="1">Template 1 – Respectful</option>
-<option value="2">Template 2 – Long-term user</option>
-<option value="3">Template 3 – Family & community</option>
-<option value="4">Template 4 – Manual / Permanent ban</option>
-</select>
-<button onclick="sendAccount()">SEND ACCOUNT UNBAN</button>
-</section>
-
-<section>
-<h2>Group Unban</h2>
-<input id="groupName" placeholder="Group name">
-<input id="groupLink" placeholder="Group invite link">
-<input id="groupPurpose" placeholder="Group purpose">
-<select id="groupTemplate">
-<option value="1">Formal appeal</option>
-<option value="2">Community appeal</option>
-<option value="3">Trust & Safety appeal</option>
-</select>
-<button onclick="sendGroup()">SEND GROUP UNBAN</button>
-</section>
-
-<section>
-<h2>Channel Unban</h2>
-<input id="channelName" placeholder="Channel Name">
-<input id="channelLink" placeholder="Channel Link">
-<textarea id="channelPurpose" placeholder="Channel Purpose / Info"></textarea>
-<button onclick="sendChannel()">SEND CHANNEL UNBAN</button>
-</section>
-
-<section>
-<h2>Ban Account</h2>
-<input id="scammerNumber" placeholder="Scammer's Number">
-<textarea id="scammerReason" placeholder="Reason / Evidence"></textarea>
-<button onclick="reportScammer()">BAN ACCOUNT</button>
-</section>
-
-</div>
-
-<footer>
-  <p>© <span id="year"></span> MR DEV – Follow channel for more updates</p>
-  <!-- Open chat with number -->
-  <a href="https://wa.me/233266309343" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <!-- Open channel in WhatsApp app -->
-  <a href="https://whatsapp.com/channel/0029Vb6poDc3QxS2L0dxSq3E" target="_blank">
-    <i class="fas fa-bullhorn"></i>
-  </a>
-</footer>
-
 <script>
-  /* EMAILS */
-const multiRecipientList=[
-"support@support.whatsapp.com",
-"iphone-support@support.whatsapp.com",
-"smb_web@support.whatsapp.com"
-].join(",");
+document.addEventListener("DOMContentLoaded", () => {
 
-const accountTemplates = {
+  const multiRecipientList = [
+    "support@support.whatsapp.com",
+    "iphone-support@support.whatsapp.com",
+    "smb_web@support.whatsapp.com"
+  ].join(",");
+
+  const accountTemplates = {
     "1": (num) => `
 Subject: Request for Manual Review and Reinstatement of WhatsApp Account
 
@@ -220,8 +167,7 @@ Kind regards,
 A WhatsApp User
 `.trim(),
 
-  
-  "2": (num) => `
+    "2": (num) => `
 Subject: Request for Review and Reinstatement of WhatsApp Account
 
 Dear WhatsApp Support Team,
@@ -243,9 +189,7 @@ I am more than willing to provide any additional information or verification req
 Kind regards,  
 A WhatsApp User
 `.trim(),
-
-  
-  "3": (num) => `
+    "3": (num) => `
 Subject: Request for Review and Restoration of WhatsApp Account
 
 Dear WhatsApp Support Team,
@@ -267,8 +211,7 @@ Thank you very much for your time, understanding, and consideration. I sincerely
 Kind regards,  
 A WhatsApp User
 `.trim(),
-  
-  "4": (num) => `
+    "4": (num) => `
 Subject: Request for Manual Review of Permanently Restricted WhatsApp Account
 
 Dear WhatsApp Trust & Safety Team,
@@ -294,10 +237,10 @@ I am happy to provide any additional verification or clarification that may assi
 Kind regards,  
 A WhatsApp User
 `.trim()
-};
+  };
 
-const groupTemplates = {
-  "1": (n, l, p) => `Subject: Urgent Request for Group Unban – ${n}
+  const groupTemplates = {
+    "1": (n,l,p) => `Subject: Urgent Request for Group Unban – ${n}
 
 Dear WhatsApp Support Team,
 
@@ -310,9 +253,9 @@ We kindly and respectfully request that you review our case and consider reinsta
 Thank you very much for your time, attention, and support. We sincerely hope for a positive resolution and look forward to continuing to use WhatsApp responsibly.
 
 Warm regards,  
-Group Admins
-`.trim(),
-  "2": (n, l, p) => `Subject: Community Group Appeal – ${n}
+Group Admins`.trim(),
+
+    "2": (n, l, p) => `Subject: Community Group Appeal – ${n}
 
 Dear WhatsApp Support Team,
 
@@ -327,7 +270,7 @@ Thank you very much for your time, consideration, and support. We sincerely hope
 Warm regards,  
 Group Admins
 `.trim(),
-  "3": (n, l, p) => `Subject: Trust & Safety Appeal – Group ${n}
+    "3": (n, l, p) => `Subject: Trust & Safety Appeal – Group ${n}
 
 Dear WhatsApp Trust & Safety Team,
 
@@ -342,10 +285,10 @@ Thank you very much for your time, consideration, and support. We sincerely hope
 Warm regards,  
 Group Admins
 `.trim()
-};
+  };
 
-const channelTemplates = {
-  "1": (n, l, p) => `Subject: Channel Unban Request – ${n}
+  const channelTemplates = {
+    "1": (n,l,p) => `Subject: Channel Unban Request – ${n}
 
 Dear WhatsApp Support Team,
 
@@ -358,41 +301,46 @@ The absence of our channel has caused significant disruption to our community, a
 Thank you very much for your time, understanding, and support. We sincerely hope for a swift and positive resolution, and we are committed to using WhatsApp responsibly for the benefit of our community.
 
 Warm regards,  
-Channel Admins
-`.trim()
-};
+Channel Admins`.trim()
+  };
 
-function sendAccount(){
-  const num=document.getElementById("number").value.trim();
-  if(!num) return alert("Enter number");
-  const body=encodeURIComponent(accountTemplates[document.getElementById("accountTemplate").value](num));
-  const to=document.getElementById("accountTemplate").value==="4"?multiRecipientList:"support@support.whatsapp.com";
-  location.href=`mailto:${to}?subject=WhatsApp Unban Appeal&body=${body}`;
-}
+  window.sendAccount = function(){
+    const num = document.getElementById("number").value.trim();
+    if(!num) return alert("Enter number");
 
-function sendGroup(){
-  const body=encodeURIComponent(groupTemplates[document.getElementById("groupTemplate").value](
-    document.getElementById("groupName").value,
-    document.getElementById("groupLink").value,
-    document.getElementById("groupPurpose").value
-  ));
-  location.href=`mailto:support@support.whatsapp.com?subject=Group Unban Appeal&body=${body}`;
-}
+    const template = document.getElementById("accountTemplate").value;
+    const body = encodeURIComponent(accountTemplates[template](num));
+    const to = template==="4"? multiRecipientList : "support@support.whatsapp.com";
 
-function sendChannel(){
-  const body=encodeURIComponent(channelTemplates["1"](
-    document.getElementById("channelName").value,
-    document.getElementById("channelLink").value,
-    document.getElementById("channelPurpose").value
-  ));
-  location.href=`mailto:support@support.whatsapp.com?subject=Channel Unban Appeal&body=${body}`;
-}
+    window.open(`mailto:${to}?subject=WhatsApp Unban Appeal&body=${body}`);
+  };
 
-function reportScammer(){
-  const num=document.getElementById("scammerNumber").value.trim();
-  const reason=document.getElementById("scammerReason").value.trim();
-  if(!num || !reason) return alert("Enter number and reason");
-  const body=encodeURIComponent(`Subject: Scammer Report – ${num}
+  window.sendGroup = function(){
+    const n = document.getElementById("groupName").value.trim();
+    const l = document.getElementById("groupLink").value.trim();
+    const p = document.getElementById("groupPurpose").value.trim();
+    if(!n || !l || !p) return alert("Fill all fields");
+
+    const body = encodeURIComponent(groupTemplates[document.getElementById("groupTemplate").value](n,l,p));
+    window.open(`mailto:support@support.whatsapp.com?subject=Group Unban Appeal&body=${body}`);
+  };
+
+  window.sendChannel = function(){
+    const n = document.getElementById("channelName").value.trim();
+    const l = document.getElementById("channelLink").value.trim();
+    const p = document.getElementById("channelPurpose").value.trim();
+    if(!n || !l || !p) return alert("Fill all fields");
+
+    const body = encodeURIComponent(channelTemplates["1"](n,l,p));
+    window.open(`mailto:support@support.whatsapp.com?subject=Channel Unban Appeal&body=${body}`);
+  };
+
+  window.reportScammer = function(){
+    const num = document.getElementById("scammerNumber").value.trim();
+    const reason = document.getElementById("scammerReason").value.trim();
+    if(!num || !reason) return alert("Enter number and reason");
+
+    const body = encodeURIComponent(`Subject: Scammer Report – ${num}
 
 Dear WhatsApp Support Team,
 
@@ -403,11 +351,10 @@ We kindly request that your team conduct an immediate and thorough investigation
 Thank you very much for your time, attention, and swift intervention. Your efforts in safeguarding the community are greatly appreciated.
 
 Sincerely,  
-[Concerned User]`
-  location.href=`mailto:support@support.whatsapp.com?subject=Scammer Report&body=${body}`;
-}
+[Concerned User]`);
+
+    window.open(`mailto:support@support.whatsapp.com?subject=Scammer Report&body=${body}`);
+  };
+
+});
 </script>
-</body>
-  </html>
-
-
