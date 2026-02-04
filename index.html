@@ -152,47 +152,42 @@ section{margin-top:40px}
 </div>
 
 <script>
-/* 🔓 UNLOCK LOGIC */
-const DURATION=20000;
-const unlock=document.getElementById("unlock");
-const tool=document.getElementById("tool");
-const timer=document.getElementById("timer");
-const text=document.querySelector(".unlock-text");
-let interval=null;
+/* 🔓 INSTANT UNLOCK LOGIC (NO TIMER) */
 
-function startCountdown(sec){
-  let s=sec;
-  timer.textContent=s;
-  text.textContent="Decrypting access…";
-  interval=setInterval(()=>{
-    s--;
-    timer.textContent=s;
-    if(s<=0){
-      clearInterval(interval);
-      sessionStorage.removeItem("unlockStart");
-      unlock.style.display="none";
-      tool.style.display="block";
-    }
-  },1000);
+const unlock = document.getElementById("unlock");
+const tool = document.getElementById("tool");
+const text = document.querySelector(".unlock-text");
+const unlockBtn = document.getElementById("unlockBtn");
+
+// Unlock function
+function unlockTool() {
+  sessionStorage.setItem("unlocked", "yes");
+  unlock.style.display = "none";
+  tool.style.display = "block";
 }
 
-document.getElementById("unlockBtn").onclick=()=>{
-  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
-  if(sessionStorage.getItem("unlockStart")) return;
-  const start=Date.now();
-  sessionStorage.setItem("unlockStart",start);
-  startCountdown(20);
+// Button click
+unlockBtn.onclick = () => {
+  // Open ads link
+  window.open(
+    "https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb",
+    "_blank"
+  );
+
+  // Update text for feedback
+  text.textContent = "Access granted…";
+
+  // Instantly unlock
+  unlockTool();
 };
 
-const saved=sessionStorage.getItem("unlockStart");
-if(saved){
-  const elapsed=Date.now()-saved;
-  const rem=Math.ceil((DURATION-elapsed)/1000);
-  if(rem>0) startCountdown(rem);
-  else{unlock.style.display="none";tool.style.display="block";}
+// Stay unlocked on refresh
+if (sessionStorage.getItem("unlocked") === "yes") {
+  unlock.style.display = "none";
+  tool.style.display = "block";
 }
 
-//Email side
+/* 📧 EMAIL LOGIC (UNCHANGED) */
 const multiRecipientList=[
 "support@support.whatsapp.com",
 "iphone-support@support.whatsapp.com",
