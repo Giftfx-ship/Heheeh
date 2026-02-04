@@ -113,11 +113,13 @@ footer a{
 
 <!-- UNLOCK -->
 <div id="unlock" class="card">
-  <h1>🔓 Access Pro Appeals</h1>
+  <h1>🔓 Access Unban Tool</h1>
   <p class="unlock-text">Waiting period before tool unlocks…</p>
   <p id="timer">20</p>
-  <button onclick="followAndUnlock()"> VIEW ADS TO UNLOCK</button>
-  <p style="margin-top:15px;font-size:14px;color:#00fff0;">Follow our channel for updates and chat with developer.</p>
+  <button id="unlockBtn">VIEW ADS TO UNLOCK</button>
+  <p style="margin-top:15px;font-size:14px;color:#00fff0;">
+    Follow our channel for updates or chat with developer.
+  </p>
 </div>
 <!-- TOOL -->
 <div id="tool" class="card" style="display:none;">
@@ -179,26 +181,42 @@ footer a{
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-/* UNLOCK TIMER */
-let count = 20;
-const timer = document.getElementById("timer");
-const unlockText = document.querySelector(".unlock-text");
-let interval = setInterval(()=>{
-  count--;
-  timer.textContent = count;
-  if(count<=0){
-    clearInterval(interval);
-    unlockText.textContent = "Tool unlocked!";
-    document.getElementById("tool").style.display="block";
-    document.getElementById("unlock").style.display="none";
-  }
-},1000);
+  const timer = document.getElementById("timer");
+  const unlockText = document.querySelector(".unlock-text");
+  const toolDiv = document.getElementById("tool");
+  const unlockDiv = document.getElementById("unlock");
+  const unlockBtn = document.getElementById("unlockBtn");
 
-function followAndUnlock(){
-  window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
-}
+  let count = 20;
+  let unlocked = false;
+  let interval = null;
+
+  unlockBtn.addEventListener("click", () => {
+    // Open the ad / link
+    window.open("https://immoralmisspell.com/siqangwka?key=a8d71407d10b0cd8b536342acd8b5feb","_blank");
+
+    // Prevent multiple timers
+    if(interval) return;
+
+    // Start the countdown
+    interval = setInterval(() => {
+      count--;
+      timer.textContent = count;
+      unlockText.textContent = "Unlocking in " + count + "s...";
+      if(count <= 0 && !unlocked){
+        clearInterval(interval);
+        unlocked = true;
+        unlockText.textContent = "Tool unlocked!";
+        toolDiv.style.display = "block";
+        unlockDiv.style.display = "none";
+      }
+    }, 1000);
+  });
+});
+
 
 /* EMAILS */
 const multiRecipientList=[
