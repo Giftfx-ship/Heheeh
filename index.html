@@ -203,30 +203,55 @@ const multiRecipientList=[
 ].join(",");
 
 const accountTemplates = {
-  "1": (num) => `Subject: Request for Manual Review – Account ${num}
+    "1": (num) => `
+Subject: Request for Manual Review and Reinstatement of WhatsApp Account
 
 Dear WhatsApp Support Team,
 
-I respectfully request the immediate review and reinstatement of my WhatsApp account ${num}. This account is my primary communication tool, and the restriction has severely disrupted my personal, professional, and family communication. 
+I hope this message finds you well. I am writing to respectfully request a detailed review of the ban placed on my WhatsApp account associated with the phone number ${num}.
 
-I have never intentionally violated WhatsApp policies. Any unusual activity is purely unintentional, and I kindly ask for a thorough manual review. I assure strict compliance with all guidelines moving forward.
+I understand that WhatsApp enforces strict policies to protect users and maintain a safe communication environment. I truly respect these rules and appreciate the effort your team puts into preventing spam, scams, and misuse of the platform. However, I strongly believe that my account may have been restricted by mistake or unintentionally flagged by automated systems.
 
-Thank you for your time and consideration.
+My WhatsApp account is extremely important to me, as it is my primary means of communication with family members, friends, and legitimate contacts. I rely on it daily for meaningful personal conversations and necessary coordination. Since the ban, I have experienced significant disruption in staying connected with people who depend on this channel to reach me.
 
-Kind regards,
-MR DEV
+I would like to clearly state that I have never knowingly or intentionally engaged in any activity that violates WhatsApp’s Terms of Service or Community Guidelines. I have not used my account for spamming, scamming, sending bulk or unsolicited messages, spreading misinformation, or engaging in abusive behavior.
+
+If any of my recent activity was misunderstood — such as sending messages too frequently, being added to multiple groups, forwarding messages, or any other normal usage that may have appeared unusual — I sincerely apologize. Any such activity was unintentional, and I now better understand how certain patterns can be misinterpreted.
+
+If the restriction was related to the use of an unofficial or third-party application, I want to honestly state that I was not fully aware of the associated risks. I take full responsibility and assure you that I will only use the official WhatsApp application moving forward.
+
+I genuinely value WhatsApp as a platform and have always aimed to use it responsibly and respectfully. I kindly request a second chance and ask that my account be reviewed manually if possible. I am fully committed to complying with all WhatsApp policies and ensuring that my future usage remains within acceptable limits.
+
+I am willing to provide any additional information or verification required to assist in this review. I respectfully ask for your understanding and consideration in restoring my account.
+
+Thank you very much for your time and attention. I sincerely hope for a positive resolution.
+
+Kind regards,  
+A WhatsApp User
 `.trim(),
 
-  "2": (num) => `Subject: Long-term user appeal – Account ${num}
+  
+  "2": (num) => `
+Subject: Request for Review and Reinstatement of WhatsApp Account
 
 Dear WhatsApp Support Team,
 
-I have been a responsible WhatsApp user for many years. My account ${num} was unexpectedly restricted, causing significant disruption to personal and business communication.
+I hope this message finds you well. I am writing to respectfully request a thorough review of the ban placed on my WhatsApp account associated with the phone number ${num}.
 
-I kindly request urgent manual review. My actions have always complied with WhatsApp policies. I am committed to full compliance and avoiding any future misunderstandings.
+I have been a consistent and responsible WhatsApp user for several years, and throughout this time I have made every effort to comply with WhatsApp’s Terms of Service and Community Guidelines. I understand that these rules are essential to maintaining a safe and trustworthy platform, and I fully support WhatsApp’s commitment to protecting its users.
 
-Sincerely,
-MR DEV
+The restriction of my account has caused significant difficulty, as WhatsApp is my primary channel for important and legitimate communication. I rely on it daily to stay in touch with close family members, manage personal responsibilities, and handle essential professional communications. The loss of access has disrupted these activities and made it difficult for people who depend on this number to reach me.
+
+I would like to clearly state that I have never intentionally engaged in any activity that violates WhatsApp policies. I have not used automated tools, bulk messaging services, unauthorized third-party applications, or any methods intended to spam, scam, or misuse the platform. My account usage has always been for genuine, lawful communication.
+
+If any of my recent activity was mistakenly interpreted as suspicious — such as sending multiple messages in a short period, participating in group chats, or forwarding messages — I sincerely apologize. Any such activity was unintentional and I now better understand how certain usage patterns may be flagged by automated systems.
+
+I truly value WhatsApp and the role it plays in my daily life. I respectfully request a manual review of my account, as I believe this will help clarify any misunderstanding that led to the restriction. I am fully committed to complying with all policies going forward and ensuring my account is used responsibly at all times.
+
+I am more than willing to provide any additional information or verification required to assist with this review. Thank you very much for your time, patience, and consideration. I sincerely hope for a positive outcome and the restoration of my account.
+
+Kind regards,  
+A WhatsApp User
 `.trim(),
 
   "3": (num) => `Subject: Family & community appeal – Account ${num}
